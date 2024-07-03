@@ -1,0 +1,19 @@
+version: "2.4"  # Corrected version syntax
+
+services:
+  app:
+    container_name: knoteapp  # Lowercase 'container_name' corrected
+    image: learnitguide/knotejs:1.0
+    environment:
+      MONGO_URL: mongodb://mango_db_host:27017/dev  # Corrected 'MONGO_URL' syntax and 'mango_db_host'
+    ports:
+      - "80:3000"
+    depends_on:
+      - mango  # Corrected 'depends_on' syntax (lowercase)
+    links:
+      - mango:mango_db_host  # Corrected 'links' syntax and 'mango_db_host'
+
+  mango:
+    container_name: knote-mango  # Corrected 'container_name' syntax
+    image: mongo  # Corrected 'image' syntax
+
